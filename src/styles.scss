@@ -1,0 +1,42 @@
+// Importamos tokens y mixins para poder usarlos aquí
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Reset básico: el ancho de un elemento incluye padding y borde.
+// Sin esto, un div de 100% con padding se desborda de la pantalla.
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+// Estilos base de toda la página
+body {
+    margin: 0; // Quita el margen por defecto del navegador
+    font-family: $font-body;
+    font-size: $fs-200;
+    color: $color-ink;
+    background-color: $color-cream; // Fondo tono papel antiguo
+    line-height: 1.6; // Interlineado cómodo para leer
+}
+
+// Todos los títulos usan la serif y el verde de carreras
+h1,
+h2,
+h3 {
+    font-family: $font-heading;
+    color: $color-racing-green;
+}
+
+// Las imágenes nunca se salen de su contenedor y mantienen proporción
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+// Accesibilidad (WCAG): indicador visible cuando navegas con teclado (Tab).
+// :focus-visible solo aparece con teclado, no al hacer clic con el ratón.
+:focus-visible {
+    outline: 3px solid $color-burgundy;
+    outline-offset: 3px; // Separación entre el elemento y el contorno
+}

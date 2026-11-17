@@ -1,0 +1,19 @@
+// Importa las variables. "as *" permite usarlas sin prefijo ($bp-tablet
+// en vez de variables.$bp-tablet).
+@use 'variables' as *;
+
+// Uso: @include tablet { ...estilos... }
+// Se aplican a partir de 768px de ancho (tablet y superiores).
+@mixin tablet {
+    @media (min-width: $bp-tablet) {
+        @content; // @content es el bloque de estilos que escribes al usar el mixin
+    }
+}
+
+// Uso: @include desktop { ...estilos... }
+// Se aplican a partir de 1440px (escritorio).
+@mixin desktop {
+    @media (min-width: $bp-desktop) {
+        @content;
+    }
+}

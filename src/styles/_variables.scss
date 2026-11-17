@@ -1,0 +1,46 @@
+// ===== COLORES =====
+// Paleta del briefing: cuero, cromo, British Racing Green y burdeos.
+// Los "$" son variables de Sass: se usan luego como $color-leather.
+$color-racing-green: #1e3d2f;       // Verde principal (títulos, header)
+$color-racing-green-dark: #142a20;  // Versión oscura (hover, footer)
+$color-leather: #8b5a2b;            // Marrón cuero (botones, acentos)
+$color-leather-light: #b07a45;      // Cuero claro (hover de botones)
+$color-burgundy: #6b1f2e;           // Burdeos (foco de teclado, alertas)
+$color-chrome: #c9cdd2;             // Gris cromado (bordes, separadores)
+$color-cream: #f4ede0;              // Fondo general, tono papel antiguo
+$color-ink: #1c1a17;                // Color del texto principal
+$color-white: #ffffff;
+
+// ===== TIPOGRAFÍA =====
+// Serif elegante para títulos, sans-serif legible para el texto.
+// Los nombres tras la primera fuente son "plan B" si no carga la de Google.
+$font-heading: 'Playfair Display', Georgia, serif;
+$font-body: 'Source Sans 3', Arial, sans-serif;
+$font-mono: 'JetBrains Mono', monospace;  // Para datos técnicos (potencia, año)
+
+// Escala de tamaños de texto (rem = relativo al tamaño base del navegador,
+// así respetas la accesibilidad si el usuario aumenta la letra)
+$fs-100: 0.875rem;  // 14px: texto pequeño
+$fs-200: 1rem;      // 16px: texto normal
+$fs-300: 1.25rem;   // 20px: subtítulos
+$fs-400: 1.75rem;   // 28px: títulos h2
+$fs-500: 2.5rem;    // 40px: título h1
+
+// ===== ESPACIADOS =====
+// Escala fija para márgenes y paddings, así todo tiene ritmo coherente.
+$space-1: 0.25rem;  // 4px
+$space-2: 0.5rem;   // 8px
+$space-3: 1rem;     // 16px
+$space-4: 1.5rem;   // 24px
+$space-5: 2.5rem;   // 40px
+$space-6: 4rem;     // 64px
+
+// ===== BREAKPOINTS =====
+// Puntos de ruptura del enunciado. Mobile-first: el CSS base es para móvil
+// (375px) y con min-width vas añadiendo reglas para pantallas mayores.
+$bp-tablet: 768px;
+$bp-desktop: 1440px;
+
+// ===== OTROS =====
+$radius: 4px;                              // Esquinas poco redondeadas (estilo sobrio)
+$shadow: 0 2px 8px rgba(0, 0, 0, 0.2);     // Sombra suave para tarjetas
