@@ -1,6 +1,9 @@
+<app-header />
 
-<app-header></app-header>
+<!-- <main> holds the unique main content of the page (semantic HTML5).
+    <router-outlet> is where Angular renders the active page based on the URL. -->
+<main id="main-content">
+    <router-outlet />
+</main>
 
-<router-outlet />
-
-<app-footer></app-footer>
+<app-footer />

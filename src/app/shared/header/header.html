@@ -1,1 +1,20 @@
-<p>header works!</p>
+<header class="header">
+    <!-- aria-label distinguishes this nav from others (accessibility) -->
+    <nav class="header__nav" aria-label="Navegación principal">
+        <ul class="header__list">
+            <li>
+                <!-- routerLinkActive adds the modifier class to the current page link.
+            exact: true prevents the home link ("/") from always being active. -->
+                <a class="header__link" routerLink="/" routerLinkActive="header__link--active"
+                    [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+            </li>
+            <li><a class="header__link" routerLink="/catalog" routerLinkActive="header__link--active">Catálogo</a></li>
+            <li><a class="header__link" routerLink="/itinerary" routerLinkActive="header__link--active">Itinerario</a>
+            </li>
+            <li><a class="header__link" routerLink="/registration"
+                    routerLinkActive="header__link--active">Inscripción</a></li>
+            <li><a class="header__link" routerLink="/guia-estilo" routerLinkActive="header__link--active">Guía de
+                    estilo</a></li>
+        </ul>
+    </nav>
+</header>
