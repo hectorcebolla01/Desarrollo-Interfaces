@@ -1,9 +1,72 @@
-<h1>Catálogo</h1>
-<p>{{ vehicles().length }} vehículos cargados</p>
+<section class="catalog">
+    <h1 class="catalog__title">Catálogo de vehículos</h1>
 
-<!-- @for is Angular's built-in loop; "track" helps it update the DOM efficiently -->
-<ul>
-    @for (vehicle of vehicles(); track vehicle.id) {
-    <li>{{ vehicle.brand }} {{ vehicle.model }} ({{ vehicle.year }})</li>
+    <!-- role="search" tells assistive technologies this is a search/filter area -->
+    <form class="catalog__filters" role="search" (submit)="$event.preventDefault()">
+        <div class="catalog__field">
+            <label class="catalog__label" for="search">Buscar por marca o modelo</label>
+            <!-- [value] binds the signal to the input; (input) updates it on every keystroke -->
+            <input class="catalog__input" id="search" type="search" [value]="searchTerm()" (input)="onSearch($event)" />
+        </div>
+
+        <div class="catalog__field">
+            <label class="catalog__label" for="category">Categoría</label>
+            <select class="catalog__input" id="category" [value]="selectedCategory()"
+                (change)="onCategoryChange($event)">
+                <option value="all">Todas</option>
+                @for (category of categories(); track category) {
+                <option [value]="category">{{ category }}</option>
+                }
+            </select>
+        </div>
+
+        <button type="button" class="catalog__reset" (click)="resetFilters()">
+            Limpiar filtros
+        </button>
+    </form>
+
+    <!-- aria-live announces the result count to screen readers when it changes -->
+    <p class="catalog__count" aria-live="polite">
+        {{ filteredVehicles().length }} de {{ vehicles().length }} vehículos
+    </p>
+
+    <!-- Technical sheet: only rendered when a vehicle is selected -->
+    @if (selectedVehicle(); as vehicle) {
+    <section class="catalog__detail" aria-labelledby="detail-title">
+        <h2 class="catalog__detail-title" id="detail-title">
+            {{ vehicle.brand }} {{ vehicle.model }}
+        </h2>
+        <dl class="catalog__specs">
+            <div class="catalog__spec">
+                <dt>Año</dt>
+                <dd>{{ vehicle.year }}</dd>
+            </div>
+            <div class="catalog__spec">
+                <dt>Categoría</dt>
+                <dd>{{ vehicle.category }}</dd>
+            </div>
+            <div class="catalog__spec">
+                <dt>Potencia</dt>
+                <dd>{{ vehicle.power }} CV</dd>
+            </div>
+            <div class="catalog__spec">
+                <dt>Motor</dt>
+                <dd>{{ vehicle.engine }}</dd>
+            </div>
+        </dl>
+        <h3>Historial</h3>
+        <p>{{ vehicle.history }}</p>
+        <button type="button" class="catalog__reset" (click)="closeDetails()">
+            Cerrar ficha
+        </button>
+    </section>
     }
-</ul>
+
+    <div class="catalog__grid">
+        @for (vehicle of filteredVehicles(); track vehicle.id) {
+        <app-vehicle-card [vehicle]="vehicle" (detailsRequested)="showDetails($event)" />
+        } @empty {
+        <p>No hay vehículos que coincidan con los filtros.</p>
+        }
+    </div>
+</section>
