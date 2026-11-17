@@ -1,0 +1,12 @@
+<article class="vehicle-card">
+    <img class="vehicle-card__image" [src]="vehicle().image" [alt]="vehicle().imageAlt" loading="lazy" />
+    <div class="vehicle-card__body">
+        <p class="vehicle-card__category">{{ vehicle().category }}</p>
+        <h3 class="vehicle-card__title">{{ vehicle().brand }} {{ vehicle().model }}</h3>
+        <p class="vehicle-card__year">{{ vehicle().year }}</p>
+        <p class="vehicle-card__summary">{{ vehicle().summary }}</p>
+        <button type="button" class="vehicle-card__button" (click)="onDetailsClick()">
+            Ver ficha técnica
+        </button>
+    </div>
+</article>

@@ -1,0 +1,67 @@
+@use 'variables' as *;
+
+// BEM block: .vehicle-card
+.vehicle-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: $color-white;
+    border: 1px solid $color-chrome;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    overflow: hidden;
+
+    // BEM elements: .vehicle-card__image, etc. (only 1 level of nesting)
+    &__image {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover; // Crops the image to fill the box without distortion
+    }
+
+    &__body {
+        display: flex;
+        flex-direction: column;
+        flex: 1; // Makes all cards the same height in the grid
+        padding: $space-3;
+    }
+
+    &__category {
+        margin: 0;
+        font-size: $fs-100;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: $color-leather;
+    }
+
+    &__title {
+        margin: $space-1 0;
+        font-size: $fs-300;
+    }
+
+    &__year {
+        margin: 0;
+        font-family: $font-mono; // Technical data uses the monospace font
+        color: $color-burgundy;
+    }
+
+    &__summary {
+        flex: 1; // Pushes the button to the bottom of the card
+        margin: $space-3 0;
+    }
+
+    &__button {
+        align-self: flex-start;
+        padding: $space-2 $space-3;
+        font-family: $font-body;
+        font-weight: 600;
+        color: $color-white;
+        background-color: $color-racing-green;
+        border: 0;
+        border-radius: $radius;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $color-racing-green-dark;
+        }
+    }
+}
