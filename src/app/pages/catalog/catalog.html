@@ -1,1 +1,9 @@
-<p>catalog works!</p>
+<h1>Catálogo</h1>
+<p>{{ vehicles().length }} vehículos cargados</p>
+
+<!-- @for is Angular's built-in loop; "track" helps it update the DOM efficiently -->
+<ul>
+    @for (vehicle of vehicles(); track vehicle.id) {
+    <li>{{ vehicle.brand }} {{ vehicle.model }} ({{ vehicle.year }})</li>
+    }
+</ul>

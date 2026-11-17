@@ -1,9 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { VehicleData } from '../../services/vehicle-data';
 
 @Component({
   imports: [],
   selector: 'app-catalog',
-  styleUrl: './catalog.css',
+
   templateUrl: './catalog.html',
+  styleUrl: './catalog.scss',
 })
-export class Catalog {}
+export class Catalog {
+  private readonly vehicleData = inject(VehicleData);
+
+  // toSignal converts the Observable into a Signal.
+  // initialValue avoids an undefined state while the data is loading.
+  readonly vehicles = toSignal(this.vehicleData.getVehicles(), { initialValue: [] });
+}
