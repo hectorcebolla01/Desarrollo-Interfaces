@@ -1,1 +1,40 @@
-<p>home works!</p>
+<!-- ===== Hero banner ===== -->
+<section class="home__hero" aria-labelledby="hero-title">
+    <p class="home__eyebrow">Classic Motor Club presenta</p>
+    <h1 class="home__hero-title" id="hero-title">
+        I Rally &amp; Concentración Histórica Classic Motor
+    </h1>
+    <p class="home__hero-text">
+        Una jornada para disfrutar de automóviles de época, pruebas de regularidad
+        y la compañía de otros aficionados.
+    </p>
+    <!-- Example data: replace with the real date and place of the event -->
+    <p class="home__hero-data">12 de abril de 2027 · Punto de encuentro: Plaza Mayor</p>
+    <div class="home__actions">
+        <a class="home__button home__button--primary" routerLink="/registration">
+            Inscríbete
+        </a>
+        <a class="home__button home__button--secondary" routerLink="/itinerary">
+            Ver programa
+        </a>
+    </div>
+</section>
+
+<!-- ===== Featured vehicles ===== -->
+<section class="home__section" aria-labelledby="featured-title">
+    <h2 class="home__section-title" id="featured-title">Vehículos destacados</h2>
+    <div class="home__grid">
+        @for (vehicle of featuredVehicles(); track vehicle.id) {
+        <app-vehicle-card [vehicle]="vehicle" (detailsRequested)="goToCatalog()" />
+        }
+    </div>
+    <a class="home__link" routerLink="/catalog">Ver todo el catálogo</a>
+</section>
+
+<!-- ===== Map ===== -->
+<section class="home__section" aria-labelledby="map-title">
+    <h2 class="home__section-title" id="map-title">Localización y punto de encuentro</h2>
+    <p>Nos reuniremos en la Plaza Mayor a partir de las 9:00 h.</p>
+    <!-- title is required: it gives the iframe an accessible name -->
+    <iframe class="home__map" title="Mapa con el punto de encuentro del rally" [src]="mapUrl" loading="lazy"></iframe>
+</section>
