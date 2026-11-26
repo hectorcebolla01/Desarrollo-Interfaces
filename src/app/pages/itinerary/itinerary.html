@@ -1,1 +1,53 @@
+<section class="itinerary">
+    <h1 class="itinerary__title">Itinerario y programa oficial</h1>
 
+    <div class="itinerary__layout">
+        <!-- ===== Day schedule ===== -->
+        <section class="itinerary__block" aria-labelledby="schedule-title">
+            <h2 class="itinerary__subtitle" id="schedule-title">Programa de la jornada</h2>
+            <!-- <ol> because the order of the activities matters -->
+            <ol class="itinerary__timeline">
+                @for (item of schedule(); track item.time) {
+                <li class="itinerary__item">
+                    <p class="itinerary__time">{{ item.time }}</p>
+                    <div>
+                        <h3 class="itinerary__item-title">{{ item.title }}</h3>
+                        <p class="itinerary__item-text">{{ item.description }}</p>
+                    </div>
+                </li>
+                }
+            </ol>
+        </section>
+
+        <!-- ===== Route stages + map ===== -->
+        <section class="itinerary__block" aria-labelledby="stages-title">
+            <h2 class="itinerary__subtitle" id="stages-title">Etapas de la ruta</h2>
+
+            <ul class="itinerary__stages">
+                @for (stage of stages(); track stage.id) {
+                <li>
+                    <!-- aria-pressed tells assistive technologies which stage is selected.
+                 The modifier class highlights it visually. -->
+                    <button type="button" class="itinerary__stage"
+                        [class.itinerary__stage--active]="stage.id === selectedStageId()"
+                        [attr.aria-pressed]="stage.id === selectedStageId()" (click)="selectStage(stage.id)">
+                        <span class="itinerary__stage-name">{{ stage.id }}. {{ stage.name }}</span>
+                        <span class="itinerary__stage-distance">{{ stage.distanceKm }} km</span>
+                    </button>
+                </li>
+                }
+            </ul>
+
+            @if (selectedStage(); as stage) {
+            <p class="itinerary__stage-description" aria-live="polite">
+                {{ stage.description }}
+            </p>
+            }
+
+            @if (mapUrl(); as url) {
+            <iframe class="itinerary__map" title="Mapa de la etapa seleccionada de la ruta" [src]="url"
+                loading="lazy"></iframe>
+            }
+        </section>
+    </div>
+</section>
