@@ -1,0 +1,60 @@
+{
+    "schedule": [
+        {
+            "time": "08:30",
+            "title": "Recepción y verificación técnica",
+            "description": "Llegada de participantes, entrega de documentación y revisión de los vehículos."
+        },
+        {
+            "time": "10:00",
+            "title": "Exposición estática",
+            "description": "Concentración de todos los vehículos en el punto de encuentro."
+        },
+        {
+            "time": "11:00",
+            "title": "Salida de la ruta",
+            "description": "Comienzo de las pruebas de regularidad por orden de dorsal."
+        },
+        {
+            "time": "14:00",
+            "title": "Comida de hermandad",
+            "description": "Parada en la segunda etapa para comer todos juntos."
+        },
+        {
+            "time": "16:30",
+            "title": "Llegada a meta",
+            "description": "Cierre de la ruta y toma de tiempos finales."
+        },
+        {
+            "time": "18:00",
+            "title": "Entrega de premios",
+            "description": "Reconocimiento a la mejor regularidad y al vehículo más elegante."
+        }
+    ],
+    "stages": [
+        {
+            "id": 1,
+            "name": "Salida: Plaza Mayor",
+            "description": "Punto de encuentro y salida de la primera prueba.",
+            "distanceKm": 0,
+            "lat": 40.4155,
+            "lng": -3.7074
+        },
+        {
+            "id": 2,
+            "name": "El Escorial",
+            "description": "Segunda etapa con prueba de regularidad y parada para comer.",
+            "distanceKm": 52,
+            "lat": 40.5894,
+            "lng": -4.1478
+        },
+        {
+            "id": 3,
+            "name": "Segovia: meta",
+            "description": "Llegada, toma de tiempos finales y entrega de premios.",
+            "distanceKm": 58,
+            "lat": 40.9429,
+            "lng": -4.1088
+        }
+    ]
+}
